@@ -50,6 +50,8 @@ namespace AspNetBookLoan.Controllers
                 _db.Emprestimos.Add(emprestimos);
                 _db.SaveChanges();
 
+                TempData["MensagemSucesso"] = "Cadastro Realizado com Sucesso";
+
                 return RedirectToAction("Index");
             }
 
@@ -63,6 +65,8 @@ namespace AspNetBookLoan.Controllers
             {
                 _db.Emprestimos.Update(emprestimo);
                 _db.SaveChanges();
+
+                TempData["MensagemSucesso"] = "Edição Realizada com Sucesso";
 
                 return RedirectToAction("Index");
             }
@@ -95,7 +99,11 @@ namespace AspNetBookLoan.Controllers
             _db.Emprestimos.Remove(emprestimo);
             _db.SaveChanges();
 
+            TempData["MensagemSucesso"] = "Remoção Realizado com Sucesso";
+
             return RedirectToAction("Index");
         }
+
+
     }
 }
