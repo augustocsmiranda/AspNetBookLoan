@@ -1,52 +1,56 @@
-﻿@model IEnumerable<EmprestimosModel>
+﻿    @model IEnumerable<EmprestimosModel>
 
-<div class="container">
-    <div class="d-flex justify-content-between align-items-center mb-5">
-        <h1>Empréstimos</h1>
-        <a class="btn btn-success mx-2" asp-controller="Emprestimo" asp-action="Cadastrar"><i class="bi bi-file-earmark-plus mx-2"></i>Cadastrar Novo Empréstimo</a>
-    </div>
-
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-
-@if(TempData["MensagemSucesso"] != null)
-    {
-        <div class="alert alert-success text-light " role="alert">
-            @TempData["MensagemSucesso"]
-        </div>
-    }
-    <table id="Emprestimos" class="table table-light table-hover">
-    <thead>
-        <tr>
-            <th scope="col">Recebedor</th>
-            <th scope="col">Fornecedor</th>
-            <th scope="col">Livro</th>
-            <th scope="col">Ultima Atualização</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @if(Model != null)
-        {
-            @foreach(var emprestimo in Model)
-            {
-                <tr>
-                    <th scope="row">@emprestimo.Recebedor</th>
-                    <td>@emprestimo.Fornecedor</td>
-                    <td>@emprestimo.LivroEmprestado</td>
-                    <td>@emprestimo.dataUltimaAtualizacao</td>
-                    <td>
-                            <a asp-controller="Emprestimo" asp-action="Editar" asp-route-id="@emprestimo.Id" class="btn btn-warning "><i class="bi bi-pencil-square"></i>Editar</a>
-                            <a asp-controller="Emprestimo" asp-action="Excluir" asp-route-id="@emprestimo.Id" class="btn btn-danger "><i class="bi bi-trash3-fill"></i>Excluir</a>
-                    </td>
-                </tr>
-            }
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-5">
+            <h1>Empréstimos</h1>
+            <div>
+                <a class="btn btn-success mx-2" asp-controller="Emprestimo" asp-action="Exportar"><i class="bi bi-file-earmark-plus mx-2"></i>Exportar</a>
+                <a class="btn btn-success mx-2" asp-controller="Emprestimo" asp-action="Cadastrar"><i class="bi bi-file-earmark-plus mx-2"></i>Cadastrar Novo Empréstimo</a>
+            </div>
             
-        }
+        </div>
 
-    </tbody>
-</table>
-</div>
+    @*
+        For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    *@
+    @{
+    }
+
+    @if(TempData["MensagemSucesso"] != null)
+        {
+            <div class="alert alert-success text-light " role="alert">
+                @TempData["MensagemSucesso"]
+            </div>
+        }
+        <table id="Emprestimos" class="table table-light table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Recebedor</th>
+                <th scope="col">Fornecedor</th>
+                <th scope="col">Livro</th>
+                <th scope="col">Data do Empréstimo</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model != null)
+            {
+                @foreach(var emprestimo in Model)
+                {
+                    <tr>
+                        <th scope="row">@emprestimo.Recebedor</th>
+                        <td>@emprestimo.Fornecedor</td>
+                        <td>@emprestimo.LivroEmprestado</td>
+                        <td>@emprestimo.dataUltimaAtualizacao</td>
+                        <td>
+                                <a asp-controller="Emprestimo" asp-action="Editar" asp-route-id="@emprestimo.Id" class="btn btn-warning "><i class="bi bi-pencil-square"></i>Editar</a>
+                                <a asp-controller="Emprestimo" asp-action="Excluir" asp-route-id="@emprestimo.Id" class="btn btn-danger "><i class="bi bi-trash3-fill"></i>Excluir</a>
+                        </td>
+                    </tr>
+                }
+            
+            }
+
+        </tbody>
+    </table>
+    </div>
