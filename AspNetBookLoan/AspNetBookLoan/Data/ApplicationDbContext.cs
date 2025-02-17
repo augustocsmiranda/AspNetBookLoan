@@ -12,6 +12,8 @@ namespace AspNetBookLoan.Data
 
         public DbSet<EmprestimosModel> Emprestimos { get; set; }
 
+        public DbSet<UsuarioModel> Usuarios { get; set; }
+
 
     }
 }
