@@ -1,4 +1,6 @@
 using AspNetBookLoan.Data;
+using AspNetBookLoan.Services.LoginService;
+using AspNetBookLoan.Services.SenhaService;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +11,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddScoped<ILoginInterface, LoginService>();
+builder.Services.AddScoped<ISenhaInterface, SenhaService>();
 
 var app = builder.Build();
 

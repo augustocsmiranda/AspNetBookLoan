@@ -1,4 +1,7 @@
-﻿@if (TempData["MensagemSucesso"] != null)
+﻿@using AspNetBookLoan.Dto
+@model UsuarioRegisterDto
+
+@if (TempData["MensagemSucesso"] != null)
 {
     <div class="alert alert-success text-light " role="alert">
         @TempData["MensagemSucesso"]
@@ -13,29 +16,31 @@
 }
 
 
+<div asp-validation-summary="All" class="text-danger"></div>
+
 <div class="container">
     <h1>Cadastro de Usuários</h1>
-    <form>
+    <form asp-action="Registrar" asp-controller="Login" method="post">
         <div class="mb-3">
             <label for="email" class="form-label">Email:</label>
-            <input type="email" class="form-control" id="email">
+            <input type="email" class="form-control" id="email" asp-for="Email">
         </div>
         <div class="mb-3">
             <label for="nome" class="form-label">Nome:</label>
-            <input type="text" class="form-control" id="nome">
+            <input type="text" class="form-control" id="nome" asp-for="Nome">
         </div>
         <div class="mb-3">
             <label for="sobrenome" class="form-label">Sobrenome:</label>
-            <input type="text" class="form-control" id="sobrenome">
+            <input type="text" class="form-control" id="sobrenome" asp-for="Sobrenome">
         </div>
 
         <div class="mb-3">
             <label for="senha" class="form-label">Senha:</label>
-            <input type="password" class="form-control" id="senha">
+            <input type="password" class="form-control" id="senha" asp-for="Senha">
         </div>
         <div class="mb-3">
             <label for="senha" class="form-label">Confirmar Senha:</label>
-            <input type="password" class="form-control" id="senha">
+            <input type="password" class="form-control" id="senha" asp-for="ConfirmaSenha">
         </div>
 
         <div class="d-flex justify-content-center">
